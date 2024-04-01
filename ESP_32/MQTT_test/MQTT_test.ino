@@ -50,20 +50,19 @@ void callback(char* topic, byte* message, unsigned int length) {
   Serial.print(topic);
   Serial.print(". Message: ");
   String messageTemp;
-  
+
   for (int i = 0; i < length; i++) {
     Serial.print((char)message[i]);
     messageTemp += (char)message[i];
   }
   Serial.println();
-  
+
   if (String(topic) == "esp32/led") {
     Serial.print("Changing output to ");
-    if(messageTemp == "ON"){
+    if (messageTemp == "ON") {
       Serial.println("ON");
       digitalWrite(ledPin, HIGH);
-    }
-    else if(messageTemp == "OFF"){
+    } else if (messageTemp == "OFF") {
       Serial.println("OFF");
       digitalWrite(ledPin, LOW);
     }
